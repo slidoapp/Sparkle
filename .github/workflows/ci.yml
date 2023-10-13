@@ -78,14 +78,14 @@ jobs:
         run: |
             echo ::set-output name=content::$(cat anaylze_output.txt)
       
-      - name: Post Analyzed Warnings
-        if: ${{ success() && matrix.run-analyzer && github.event_name == 'pull_request' && steps.findwarnings.outputs.analyzestatus == '0' }}
-        uses: mshick/add-pr-comment@v1
-        with:
-            allow-repeats: false
-            repo-token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
-            repo-token-user-login: 'Sparkle-Bot'
-            message: "``` ${{ steps.warnings.outputs.content }} ```"
+      # - name: Post Analyzed Warnings
+      #   if: ${{ success() && matrix.run-analyzer && github.event_name == 'pull_request' && steps.findwarnings.outputs.analyzestatus == '0' }}
+      #   uses: mshick/add-pr-comment@v1
+      #   with:
+      #       allow-repeats: false
+      #       repo-token: ${{ secrets.BOT_PERSONAL_ACCESS_TOKEN }}
+      #       repo-token-user-login: 'Sparkle-Bot'
+      #       message: "``` ${{ steps.warnings.outputs.content }} ```"
         
       - name: Build Release Distribution
         env:
