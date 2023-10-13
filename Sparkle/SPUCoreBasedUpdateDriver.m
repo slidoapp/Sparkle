@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sparkle Project. All rights reserved.
 //
 
+#import "Sparkle/Sparkle-Swift.h"
 #import "SPUCoreBasedUpdateDriver.h"
 #import "SUHost.h"
 #import "SPUUpdaterDelegate.h"
@@ -15,9 +16,9 @@
 #import "SULog.h"
 #import "SULog+NSError.h"
 #import "SUErrors.h"
-#import "SPUResumableUpdate.h"
+// #import "SPUResumableUpdate.h"
 #import "SPUDownloadedUpdate.h"
-#import "SPUInformationalUpdate.h"
+// #import "SPUInformationalUpdate.h"
 #import "SUAppcastItem.h"
 #import "SULocalizations.h"
 #import "SPUInstallationType.h"

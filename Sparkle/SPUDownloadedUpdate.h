@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SPUResumableUpdate.h"
+#import "Sparkle/Sparkle-Swift.h"
+// #import "SPUResumableUpdate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
