@@ -83,7 +83,7 @@ jobs:
       
       - name: Post Analyzed Warnings
         if: ${{ success() && matrix.run-analyzer && github.event_name == 'pull_request' && steps.findwarnings.outputs.analyzestatus == '0' }}
-        uses: mshick/add-pr-comment@v2
+        uses: mshick/add-pr-comment@7c0890544fb33b0bdd2e59467fbacb62e028a096 # v2.8.1
         with:
             allow-repeats: false
             message: "``` ${{ steps.warnings.outputs.content }} ```"
