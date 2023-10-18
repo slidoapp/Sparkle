@@ -29,7 +29,7 @@
 #import "SPUAppcastItemState.h"
 
 
-#include "AppKitPrevention.h"
+// #include "AppKitPrevention.h"
 
 @interface SUAppcastDriver () <SPUDownloadDriverDelegate>
 @end
