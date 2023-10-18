@@ -15,7 +15,7 @@
 #import <Sparkle/SUExport.h>
 #import <Sparkle/SUAppcast.h>
 #import <Sparkle/SUAppcastItem.h>
-#import <Sparkle/SUStandardVersionComparator.h>
+// #import <Sparkle/SUStandardVersionComparator.h>
 #import <Sparkle/SPUUpdater.h>
 #import <Sparkle/SPUUpdaterDelegate.h>
 #import <Sparkle/SPUUpdaterSettings.h>

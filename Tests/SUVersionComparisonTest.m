@@ -6,7 +6,8 @@
 //  Copyright 2008 Andy Matuschak. All rights reserved.
 //
 
-#import "SUStandardVersionComparator.h"
+#import "SwiftSupport.h"
+// #import "SUStandardVersionComparator.h"
 #import <XCTest/XCTest.h>
 
 @interface SUVersionComparisonTestCase : XCTestCase {

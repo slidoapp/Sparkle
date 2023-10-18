@@ -14,7 +14,7 @@
 #import "SULog.h"
 #import "SUErrors.h"
 // #import "SUVersionComparisonProtocol.h"
-#import "SUStandardVersionComparator.h"
+// #import "SUStandardVersionComparator.h"
 
 
 #include "AppKitPrevention.h"

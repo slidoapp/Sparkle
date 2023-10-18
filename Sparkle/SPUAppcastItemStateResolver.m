@@ -11,7 +11,7 @@
 #import "SPUAppcastItemStateResolver+Private.h"
 // #import "SPUAppcastItemState.h"
 // #import "SUVersionComparisonProtocol.h"
-#import "SUStandardVersionComparator.h"
+// #import "SUStandardVersionComparator.h"
 #import "SUConstants.h"
 // #import "SUOperatingSystem.h"
 

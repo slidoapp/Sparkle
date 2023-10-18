@@ -14,7 +14,7 @@
 #import "SUAppcastItem.h"
 #import "SUAppcastDriver.h"
 // #import "SUVersionComparisonProtocol.h"
-#import "SUStandardVersionComparator.h"
+// #import "SUStandardVersionComparator.h"
 #import "SUUpdateValidator.h"
 #import "SUHost.h"
 #import "SPUSkippedUpdate.h"

@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-#import "SUStandardVersionComparator.h"
+// #import "SUStandardVersionComparator.h"
 #import "SUConstants.h"
 #import "SUErrors.h"
 #import "SUUnarchiver.h"

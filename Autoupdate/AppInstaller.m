@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sparkle Project. All rights reserved.
 //
 
+#import "SwiftSupport.h"
 #import "AppInstaller.h"
 #import "SUInstaller.h"
 #import "SUUpdateValidator.h"
@@ -13,7 +14,7 @@
 #import "SULog+NSError.h"
 #import "SUHost.h"
 #import "SULocalizations.h"
-#import "SUStandardVersionComparator.h"
+// #import "SUStandardVersionComparator.h"
 #import "SPUMessageTypes.h"
 #import "SPUSecureCoding.h"
 #import "SPUInstallationInputData.h"
