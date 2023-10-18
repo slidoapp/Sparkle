@@ -13,7 +13,7 @@
 #import "SUVersionComparisonProtocol.h"
 #import "SUStandardVersionComparator.h"
 #import "SUConstants.h"
-#import "SUOperatingSystem.h"
+// #import "SUOperatingSystem.h"
 
 
 #include "AppKitPrevention.h"

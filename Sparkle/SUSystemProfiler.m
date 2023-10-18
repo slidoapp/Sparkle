@@ -7,9 +7,10 @@
 //  Adapted from Sparkle+, by Tom Harrington.
 //
 
+#import "SwiftSupport.h"
 #import "SUSystemProfiler.h"
 #import "SUHost.h"
-#import "SUOperatingSystem.h"
+// #import "SUOperatingSystem.h"
 #include <sys/sysctl.h>
 #import "SPUUpdaterDelegate.h"
 
