@@ -6,13 +6,14 @@
 //  Copyright 2008 Andy Matuschak. All rights reserved.
 //
 
+#import "SwiftSupport.h"
 #import "SUPlainInstaller.h"
 #import "SUFileManager.h"
 #import "SUConstants.h"
 #import "SUHost.h"
 #import "SULog.h"
 #import "SUErrors.h"
-#import "SUVersionComparisonProtocol.h"
+// #import "SUVersionComparisonProtocol.h"
 #import "SUStandardVersionComparator.h"
 
 

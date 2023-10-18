@@ -13,7 +13,7 @@
 #import "SUAppcast+Private.h"
 #import "SUAppcastItem.h"
 #import "SUAppcastDriver.h"
-#import "SUVersionComparisonProtocol.h"
+// #import "SUVersionComparisonProtocol.h"
 #import "SUStandardVersionComparator.h"
 #import "SUUpdateValidator.h"
 #import "SUHost.h"

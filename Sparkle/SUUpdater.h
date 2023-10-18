@@ -16,13 +16,13 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wquoted-include-in-framework-header"
 #import "SUExport.h"
-#import "SUVersionComparisonProtocol.h"
+// #import "SUVersionComparisonProtocol.h"
 #import "SUVersionDisplayProtocol.h"
 #import "SUUpdaterDelegate.h"
 #pragma clang diagnostic pop
 #else
 #import <Sparkle/SUExport.h>
-#import <Sparkle/SUVersionComparisonProtocol.h>
+// #import <Sparkle/SUVersionComparisonProtocol.h>
 #import <Sparkle/SUVersionDisplayProtocol.h>
 #import <Sparkle/SUUpdaterDelegate.h>
 #endif

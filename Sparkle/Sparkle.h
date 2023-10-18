@@ -19,7 +19,7 @@
 #import <Sparkle/SPUUpdater.h>
 #import <Sparkle/SPUUpdaterDelegate.h>
 #import <Sparkle/SPUUpdaterSettings.h>
-#import <Sparkle/SUVersionComparisonProtocol.h>
+// #import <Sparkle/SUVersionComparisonProtocol.h>
 #import <Sparkle/SUVersionDisplayProtocol.h>
 #import <Sparkle/SUErrors.h>
 #import <Sparkle/SPUUpdatePermissionRequest.h>

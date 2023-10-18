@@ -12,7 +12,7 @@
 #import "SUAppcast+Private.h"
 #import "SUAppcastItem.h"
 #import "SUAppcastItem+Private.h"
-#import "SUVersionComparisonProtocol.h"
+// #import "SUVersionComparisonProtocol.h"
 #import "SUStandardVersionComparator.h"
 #import "SPUUpdaterDelegate.h"
 #import "SUHost.h"

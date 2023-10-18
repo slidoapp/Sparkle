@@ -6,7 +6,8 @@
 //  Copyright 2007 Andy Matuschak. All rights reserved.
 //
 
-#import "SUVersionComparisonProtocol.h"
+#import "SwiftSupport.h"
+// #import "SUVersionComparisonProtocol.h"
 #import "SUStandardVersionComparator.h"
 
 

@@ -8,7 +8,7 @@
 
 #import "SwiftSupport.h"
 #import "SUAppcastItem.h"
-#import "SUVersionComparisonProtocol.h"
+// #import "SUVersionComparisonProtocol.h"
 #import "SULog.h"
 #import "SUConstants.h"
 #import "SUSignatures.h"
