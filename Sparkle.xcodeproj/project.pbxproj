@@ -1018,6 +1018,7 @@
 		61EF67580E25C5B400F754E0 /* SUHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUHost.h; sourceTree = "<group>"; };
 		61F3AC1215C22D4A00260CA2 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Sparkle.strings; sourceTree = "<group>"; };
 		61F614540E24A12D009F47E7 /* it */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Sparkle.strings; sourceTree = "<group>"; };
+		6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
 		654F352629B154AE00B10EEB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		7202DC99269ABD3500737EC4 /* testappcast_phasedRollout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testappcast_phasedRollout.xml; sourceTree = "<group>"; };
 		72045CE426FEE708004F96E5 /* strip-framework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "strip-framework.sh"; sourceTree = "<group>"; };
@@ -1961,6 +1962,7 @@
 				72F9EC421D5E9ED8004AC8B6 /* SPUDownloadData.h */,
 				721AB11626C777D900D34A86 /* SPUDownloadDataPrivate.h */,
 				72F9EC431D5E9ED8004AC8B6 /* SPUDownloadData.m */,
+				6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */,
 				7214B8851D45AD9A00CB5CED /* SPUInstallationType.h */,
 				61B5FB9409C4F04600B25A18 /* SUAppcast.h */,
 				725DED72263D10C400E7FA8F /* SUAppcast+Private.h */,
