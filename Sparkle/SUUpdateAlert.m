@@ -12,6 +12,8 @@
 
 #if SPARKLE_BUILD_UI_BITS
 
+#import "SwiftSupport.h"
+
 #import "SUUpdateAlert.h"
 
 #import "SUHost.h"
@@ -24,7 +26,7 @@
 #import "SULog.h"
 #import "SULocalizations.h"
 #import "SUAppcastItem.h"
-#import "SPUDownloadData.h"
+// #import "SPUDownloadData.h"
 #import "SUApplicationInfo.h"
 #import "SPUUpdaterSettings.h"
 #import "SUTouchBarButtonGroup.h"

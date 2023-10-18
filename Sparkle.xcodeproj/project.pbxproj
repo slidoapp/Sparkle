@@ -441,8 +441,6 @@
 		72F9EBE31D517E2F004AC8B6 /* SUUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F9EBE11D517E2F004AC8B6 /* SUUpdater.m */; };
 		72F9EC3F1D5E823F004AC8B6 /* SPUUpdaterTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F9EC3D1D5E823F004AC8B6 /* SPUUpdaterTimer.h */; };
 		72F9EC401D5E823F004AC8B6 /* SPUUpdaterTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F9EC3E1D5E823F004AC8B6 /* SPUUpdaterTimer.m */; };
-		72F9EC441D5E9ED8004AC8B6 /* SPUDownloadData.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F9EC421D5E9ED8004AC8B6 /* SPUDownloadData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		72F9EC451D5E9ED8004AC8B6 /* SPUDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F9EC431D5E9ED8004AC8B6 /* SPUDownloadData.m */; };
 		72F9EC481D5EA904004AC8B6 /* SPUUpdaterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 72F9EC471D5EA7D3004AC8B6 /* SPUUpdaterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C23E885B1BE7B24F0050BB73 /* SparkleTestCodeSignApp.enc.dmg in Resources */ = {isa = PBXBuildFile; fileRef = C23E88591BE7AF890050BB73 /* SparkleTestCodeSignApp.enc.dmg */; };
 		EA1E281722B645AE004AA304 /* libbsdiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1E280F22B64522004AA304 /* libbsdiff.a */; };
@@ -2517,7 +2515,6 @@
 				72B767E61C9CFD7200A07552 /* SPUAutomaticUpdateDriver.h in Headers */,
 				72B767D61C9C8B5C00A07552 /* SPUBasicUpdateDriver.h in Headers */,
 				72B767E21C9CE90A00A07552 /* SPUCoreBasedUpdateDriver.h in Headers */,
-				72F9EC441D5E9ED8004AC8B6 /* SPUDownloadData.h in Headers */,
 				72EF30C12675CF38008CE987 /* SPUAppcastItemState.h in Headers */,
 				72AEB1D429A1A74E0033883E /* SPUStandardVersionDisplay.h in Headers */,
 				7229E1BD1C98EFF200CB50D0 /* SPUDownloadDriver.h in Headers */,
@@ -3602,7 +3599,6 @@
 				72B767E71C9CFD7200A07552 /* SPUAutomaticUpdateDriver.m in Sources */,
 				72B767D71C9C8B5C00A07552 /* SPUBasicUpdateDriver.m in Sources */,
 				72B767E31C9CE90A00A07552 /* SPUCoreBasedUpdateDriver.m in Sources */,
-				72F9EC451D5E9ED8004AC8B6 /* SPUDownloadData.m in Sources */,
 				723ABFC5259D4CB300BDB4FA /* SUWKWebView.m in Sources */,
 				7229E1BE1C98EFF200CB50D0 /* SPUDownloadDriver.m in Sources */,
 				723B5DAA1CF7AB6A00365F95 /* SPUDownloader.m in Sources */,

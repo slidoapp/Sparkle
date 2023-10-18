@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sparkle Project. All rights reserved.
 //
 
+#import "SwiftSupport.h"
 #import "SUAppcastDriver.h"
 #import "SUAppcast.h"
 #import "SUAppcast+Private.h"
@@ -20,7 +21,7 @@
 #import "SUPhasedUpdateGroupInfo.h"
 #import "SULog.h"
 #import "SPUDownloadDriver.h"
-#import "SPUDownloadData.h"
+// #import "SPUDownloadData.h"
 #import "SULocalizations.h"
 #import "SUErrors.h"
 #import "SPUAppcastItemStateResolver.h"

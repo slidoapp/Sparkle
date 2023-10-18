@@ -25,7 +25,7 @@
 #import <Sparkle/SPUUpdatePermissionRequest.h>
 #import <Sparkle/SUUpdatePermissionResponse.h>
 #import <Sparkle/SPUUserDriver.h>
-#import <Sparkle/SPUDownloadData.h>
+// #import <Sparkle/SPUDownloadData.h>
 
 // UI bits
 #import <Sparkle/SPUStandardUpdaterController.h>

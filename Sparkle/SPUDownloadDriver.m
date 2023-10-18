@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sparkle Project. All rights reserved.
 //
 
+#import "SwiftSupport.h"
 #import "SPUDownloadDriver.h"
 #import "SPUDownloaderDelegate.h"
 #import "SPUDownloader.h"
@@ -17,7 +18,7 @@
 #import "SULog.h"
 #import "SUErrors.h"
 #import "SPUDownloadedUpdate.h"
-#import "SPUDownloadData.h"
+// #import "SPUDownloadData.h"
 #import "SUConstants.h"
 
 
