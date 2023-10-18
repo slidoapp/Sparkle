@@ -26,7 +26,7 @@
 #import "SUErrors.h"
 #import "SPUAppcastItemStateResolver.h"
 #import "SPUAppcastItemStateResolver+Private.h"
-#import "SPUAppcastItemState.h"
+// #import "SPUAppcastItemState.h"
 
 
 // #include "AppKitPrevention.h"

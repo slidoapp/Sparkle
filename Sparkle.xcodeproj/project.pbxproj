@@ -108,6 +108,8 @@
 		641D7A502ADFD6680037058F /* SPUDownloadDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D7A4F2ADFD6680037058F /* SPUDownloadDataTest.swift */; };
 		641D7A512ADFD77B0037058F /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */; };
 		641D7A532ADFF6DE0037058F /* SPUAppcastItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D7A522ADFEEDA0037058F /* SPUAppcastItemState.swift */; };
+		641D7A542ADFF95D0037058F /* SPUAppcastItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D7A522ADFEEDA0037058F /* SPUAppcastItemState.swift */; };
+		641D7A552ADFF9630037058F /* SPUAppcastItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D7A522ADFEEDA0037058F /* SPUAppcastItemState.swift */; };
 		64531E3C2ADFD2D500AC0571 /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */; };
 		64531E3D2ADFD2D600AC0571 /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */; };
 		654F352529B1548700B10EEB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B5F8F609C4CEB300B25A18 /* Security.framework */; };
@@ -419,12 +421,9 @@
 		72EE17FC26D1CC9D00C58B19 /* SPUInstallationType.h in Headers */ = {isa = PBXBuildFile; fileRef = 7214B8851D45AD9A00CB5CED /* SPUInstallationType.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		72EE181926DAE70900C58B19 /* SPUUpdateCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 72EE181826DAE6E100C58B19 /* SPUUpdateCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72EF30BE2675CF38008CE987 /* SPUAppcastItemStateResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = 72EF30BA2675CF38008CE987 /* SPUAppcastItemStateResolver.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		72EF30BF2675CF38008CE987 /* SPUAppcastItemState.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EF30BB2675CF38008CE987 /* SPUAppcastItemState.m */; };
 		72EF30C02675CF38008CE987 /* SPUAppcastItemStateResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EF30BC2675CF38008CE987 /* SPUAppcastItemStateResolver.m */; };
 		72EF30C12675CF38008CE987 /* SPUAppcastItemState.h in Headers */ = {isa = PBXBuildFile; fileRef = 72EF30BD2675CF38008CE987 /* SPUAppcastItemState.h */; };
-		72EF30C22675CF67008CE987 /* SPUAppcastItemState.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EF30BB2675CF38008CE987 /* SPUAppcastItemState.m */; };
 		72EF30C32675CF67008CE987 /* SPUAppcastItemStateResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EF30BC2675CF38008CE987 /* SPUAppcastItemStateResolver.m */; };
-		72EF30C42675CFA1008CE987 /* SPUAppcastItemState.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EF30BB2675CF38008CE987 /* SPUAppcastItemState.m */; };
 		72EF30C52675CFA1008CE987 /* SPUAppcastItemStateResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EF30BC2675CF38008CE987 /* SPUAppcastItemStateResolver.m */; };
 		72EF30C7267C716A008CE987 /* SUAppcastItem+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 72EF30C6267C716A008CE987 /* SUAppcastItem+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		72F0EC45278A55CA002A876A /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 72F0EC44278A55CA002A876A /* screenshot.png */; };
@@ -3453,7 +3452,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72EF30C22675CF67008CE987 /* SPUAppcastItemState.m in Sources */,
 				72EF30C32675CF67008CE987 /* SPUAppcastItemStateResolver.m in Sources */,
 				720AC2DC2618E8A500E25A3E /* SPUSecureCoding.m in Sources */,
 				720AC2C92618E89500E25A3E /* SUAppcastItem.m in Sources */,
@@ -3461,6 +3459,7 @@
 				72D954811CBACC35006F28BD /* InstallerProgressAppController.m in Sources */,
 				72D954831CBAD34F006F28BD /* main.m in Sources */,
 				72EB87EA1CB8798800C37F42 /* ShowInstallerProgress.m in Sources */,
+				641D7A552ADFF9630037058F /* SPUAppcastItemState.swift in Sources */,
 				727F340E2605321D00020E85 /* SULog+NSError.m in Sources */,
 				7267E5DC1D3D8F1E00D1BF90 /* SPUMessageTypes.m in Sources */,
 				723C8A561E2D60DB00C14942 /* SUTouchBarButtonGroup.m in Sources */,
@@ -3550,7 +3549,6 @@
 			files = (
 				725EE480277BF13B00D820CE /* SPUXarDeltaArchive.m in Sources */,
 				728ED34A277DA23400D9238F /* SPUSparkleDeltaArchive.m in Sources */,
-				72EF30C42675CFA1008CE987 /* SPUAppcastItemState.m in Sources */,
 				72EF30C52675CFA1008CE987 /* SPUAppcastItemStateResolver.m in Sources */,
 				72464F701E1F31E000FB341C /* SUOperatingSystem.m in Sources */,
 				7267E5A81D3D8A9900D1BF90 /* AgentConnection.m in Sources */,
@@ -3580,6 +3578,7 @@
 				721D5A8525C65D3F00D23BEA /* SUFlatPackageUnarchiver.m in Sources */,
 				7267E5CE1D3D8C7500D1BF90 /* SULog.m in Sources */,
 				7267E5C41D3D8B2700D1BF90 /* SUPackageInstaller.m in Sources */,
+				641D7A542ADFF95D0037058F /* SPUAppcastItemState.swift in Sources */,
 				7267E5871D3D89B300D1BF90 /* SUPipedUnarchiver.m in Sources */,
 				7267E5C51D3D8B2700D1BF90 /* SUPlainInstaller.m in Sources */,
 				7267E5D81D3D8D4400D1BF90 /* SUStandardVersionComparator.m in Sources */,
@@ -3614,7 +3613,6 @@
 				7267E5B71D3D8AEE00D1BF90 /* SPUInstallationInfo.m in Sources */,
 				7267E5DF1D3D8FFA00D1BF90 /* SPUInstallationInputData.m in Sources */,
 				72B767CF1C9B924900A07552 /* SPUInstallerDriver.m in Sources */,
-				72EF30BF2675CF38008CE987 /* SPUAppcastItemState.m in Sources */,
 				721BC20F1D1CDE55002BC71E /* SPULocalCacheDirectory.m in Sources */,
 				7267E5B21D3D8AD500D1BF90 /* SPUMessageTypes.m in Sources */,
 				72B3DECF1E23479000457642 /* SPUInformationalUpdate.m in Sources */,

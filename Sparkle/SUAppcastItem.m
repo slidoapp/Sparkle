@@ -6,13 +6,14 @@
 //  Copyright 2006 Andy Matuschak. All rights reserved.
 //
 
+#import "SwiftSupport.h"
 #import "SUAppcastItem.h"
 #import "SUVersionComparisonProtocol.h"
 #import "SULog.h"
 #import "SUConstants.h"
 #import "SUSignatures.h"
 #import "SPUInstallationType.h"
-#import "SPUAppcastItemState.h"
+// #import "SPUAppcastItemState.h"
 #import "SPUAppcastItemStateResolver.h"
 #import "SPUAppcastItemStateResolver+Private.h"
 

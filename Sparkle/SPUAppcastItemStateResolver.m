@@ -6,9 +6,10 @@
 //  Copyright © 2021 Sparkle Project. All rights reserved.
 //
 
+#import "SwiftSupport.h"
 #import "SPUAppcastItemStateResolver.h"
 #import "SPUAppcastItemStateResolver+Private.h"
-#import "SPUAppcastItemState.h"
+// #import "SPUAppcastItemState.h"
 #import "SUVersionComparisonProtocol.h"
 #import "SUStandardVersionComparator.h"
 #import "SUConstants.h"
