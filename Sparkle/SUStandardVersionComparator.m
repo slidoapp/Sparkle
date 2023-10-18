@@ -11,7 +11,7 @@
 #import "SUStandardVersionComparator.h"
 
 
-#include "AppKitPrevention.h"
+// #include "AppKitPrevention.h"
 
 @implementation SUStandardVersionComparator
 
