@@ -105,6 +105,8 @@
 		61B5FCDF09C52A9F00B25A18 /* SUUpdateAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 61B5FCA009C5228F00B25A18 /* SUUpdateAlert.h */; settings = {ATTRIBUTES = (); }; };
 		61EF67560E25B58D00F754E0 /* SUHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EF67550E25B58D00F754E0 /* SUHost.m */; };
 		61EF67590E25C5B400F754E0 /* SUHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 61EF67580E25C5B400F754E0 /* SUHost.h */; };
+		64531E3C2ADFD2D500AC0571 /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */; };
+		64531E3D2ADFD2D600AC0571 /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */; };
 		654F352529B1548700B10EEB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B5F8F609C4CEB300B25A18 /* Security.framework */; };
 		654F352729B154AE00B10EEB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654F352629B154AE00B10EEB /* ImageIO.framework */; };
 		654F352829B154B500B10EEB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C14F31136EFC2400649790 /* SystemConfiguration.framework */; };
@@ -405,7 +407,6 @@
 		72E45CF71B640DAE005C701A /* SUUpdateSettingsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E45CF51B640DAE005C701A /* SUUpdateSettingsWindowController.m */; };
 		72E45CF81B640DAE005C701A /* SUUpdateSettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72E45CF61B640DAE005C701A /* SUUpdateSettingsWindowController.xib */; };
 		72E45CFC1B641961005C701A /* sparkletestcast.xml in Resources */ = {isa = PBXBuildFile; fileRef = 72E45CFB1B641961005C701A /* sparkletestcast.xml */; };
-		72E539121D68C3FA0092CE5E /* SPUDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F9EC431D5E9ED8004AC8B6 /* SPUDownloadData.m */; };
 		72EB735F29BE981300FBCEE7 /* DevSignedApp.zip in Resources */ = {isa = PBXBuildFile; fileRef = 72EB735E29BE981300FBCEE7 /* DevSignedApp.zip */; };
 		72EB736129BEB36100FBCEE7 /* DevSignedAppVersion2.zip in Resources */ = {isa = PBXBuildFile; fileRef = 72EB736029BEB36100FBCEE7 /* DevSignedAppVersion2.zip */; };
 		72EB87EA1CB8798800C37F42 /* ShowInstallerProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 72EB87E91CB8798800C37F42 /* ShowInstallerProgress.m */; };
@@ -1018,6 +1019,7 @@
 		61EF67580E25C5B400F754E0 /* SUHost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUHost.h; sourceTree = "<group>"; };
 		61F3AC1215C22D4A00260CA2 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/Sparkle.strings; sourceTree = "<group>"; };
 		61F614540E24A12D009F47E7 /* it */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Sparkle.strings; sourceTree = "<group>"; };
+		641D7A4E2ADFD4110037058F /* SwiftSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftSupport.h; sourceTree = "<group>"; };
 		6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
 		654F352629B154AE00B10EEB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		7202DC99269ABD3500737EC4 /* testappcast_phasedRollout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testappcast_phasedRollout.xml; sourceTree = "<group>"; };
@@ -1821,6 +1823,7 @@
 			isa = PBXGroup;
 			children = (
 				720767D11E2EB86200F9A850 /* AppKitPrevention.h */,
+				641D7A4E2ADFD4110037058F /* SwiftSupport.h */,
 				61299B3909CB055000B7442F /* Appcast Support */,
 				55C14BD5136EEFD000649790 /* Autoupdate */,
 				72F9EBE41D519425004AC8B6 /* Deprecated */,
@@ -3517,9 +3520,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				723B5DA71CF7AB0100365F95 /* main.m in Sources */,
-				72E539121D68C3FA0092CE5E /* SPUDownloadData.m in Sources */,
 				723B5DA91CF7AB0100365F95 /* SPUDownloader.m in Sources */,
 				721BC2101D1CDE55002BC71E /* SPULocalCacheDirectory.m in Sources */,
+				64531E3C2ADFD2D500AC0571 /* SPUDownloadData.swift in Sources */,
 				728638ED1CAF50CE00783084 /* SUConstants.m in Sources */,
 				721D8A871D4C5BF10032E472 /* SULog.m in Sources */,
 			);
@@ -3617,6 +3620,7 @@
 				7246E0A41C83B685003B4E75 /* SPUStandardUpdaterController.m in Sources */,
 				725CB95B1C7121830064365A /* SPUStandardUserDriver.m in Sources */,
 				723C8A551E2D60DB00C14942 /* SUTouchBarButtonGroup.m in Sources */,
+				64531E3D2ADFD2D600AC0571 /* SPUDownloadData.swift in Sources */,
 				72B767DB1C9CD2E400A07552 /* SPUUIBasedUpdateDriver.m in Sources */,
 				72DBA37E1D60CC34002594A8 /* SPUUpdatePermissionRequest.m in Sources */,
 				72EF30C02675CF38008CE987 /* SPUAppcastItemStateResolver.m in Sources */,
@@ -4129,6 +4133,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 72F94EDA1CC36C37002DEE68 /* ConfigTestAppDebug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 			};
 			name = Coverage;
 		};
@@ -4136,6 +4141,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 149B78641B7D3A4800D7D62C /* ConfigUnitTestCoverage.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 			};
 			name = Coverage;
 		};
@@ -4204,6 +4210,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7205C46C1E13244800E370AE /* ConfigUnitTestDebug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 			};
 			name = Debug;
 		};
@@ -4211,6 +4218,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7205C46D1E13245600E370AE /* ConfigUnitTestRelease.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 			};
 			name = Release;
 		};
@@ -4218,6 +4226,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 72F94EDA1CC36C37002DEE68 /* ConfigTestAppDebug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 			};
 			name = Debug;
 		};
@@ -4225,6 +4234,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA1941CD0D94A70100DD942E /* ConfigTestApp.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 			};
 			name = Release;
 		};
@@ -4424,6 +4434,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 72D954B01CBB41E2006F28BD /* ConfigSparkleTool.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 			};
 			name = Debug;
@@ -4432,6 +4443,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 72D954B01CBB41E2006F28BD /* ConfigSparkleTool.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 			};
 			name = Coverage;
@@ -4440,6 +4452,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 72D954B01CBB41E2006F28BD /* ConfigSparkleTool.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 			};
 			name = Release;
