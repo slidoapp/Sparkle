@@ -24,8 +24,8 @@
 // #import "SPUDownloadData.h"
 #import "SULocalizations.h"
 #import "SUErrors.h"
-#import "SPUAppcastItemStateResolver.h"
-#import "SPUAppcastItemStateResolver+Private.h"
+// #import "SPUAppcastItemStateResolver.h"
+// #import "SPUAppcastItemStateResolver+Private.h"
 // #import "SPUAppcastItemState.h"
 
 

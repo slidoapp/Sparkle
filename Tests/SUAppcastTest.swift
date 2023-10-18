@@ -6,6 +6,7 @@
 //  Copyright © 2016 Sparkle Project. All rights reserved.
 //
 
+@testable import Sparkle
 import XCTest
 
 class SUAppcastTest: XCTestCase {

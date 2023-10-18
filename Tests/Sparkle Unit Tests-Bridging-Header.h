@@ -2,6 +2,7 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
+#import "SwiftSupport.h"
 #import "SUUnarchiver.h"
 #import "SUUnarchiverProtocol.h"
 #import "SUBinaryDeltaUnarchiver.h"
@@ -20,7 +21,7 @@
 #import "SPUSkippedUpdate.h"
 #import "SUSignatures.h"
 #import "SPUInstallationType.h"
-#import "SPUAppcastItemStateResolver.h"
+// #import "SPUAppcastItemStateResolver.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
