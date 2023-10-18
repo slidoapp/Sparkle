@@ -104,7 +104,6 @@
 		61EF67560E25B58D00F754E0 /* SUHost.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EF67550E25B58D00F754E0 /* SUHost.m */; };
 		61EF67590E25C5B400F754E0 /* SUHost.h in Headers */ = {isa = PBXBuildFile; fileRef = 61EF67580E25C5B400F754E0 /* SUHost.h */; };
 		641D7A502ADFD6680037058F /* SPUDownloadDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D7A4F2ADFD6680037058F /* SPUDownloadDataTest.swift */; };
-		641D7A512ADFD77B0037058F /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */; };
 		641D7A532ADFF6DE0037058F /* SPUAppcastItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D7A522ADFEEDA0037058F /* SPUAppcastItemState.swift */; };
 		641D7A542ADFF95D0037058F /* SPUAppcastItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D7A522ADFEEDA0037058F /* SPUAppcastItemState.swift */; };
 		641D7A552ADFF9630037058F /* SPUAppcastItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641D7A522ADFEEDA0037058F /* SPUAppcastItemState.swift */; };
@@ -124,9 +123,10 @@
 		64531E3D2ADFD2D600AC0571 /* SPUDownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */; };
 		64DBBACD2AE019310010F463 /* SUStandardVersionComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DBBACC2AE019310010F463 /* SUStandardVersionComparator.swift */; };
 		64DBBACE2AE019310010F463 /* SUStandardVersionComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DBBACC2AE019310010F463 /* SUStandardVersionComparator.swift */; };
-		64DBBACF2AE019310010F463 /* SUStandardVersionComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DBBACC2AE019310010F463 /* SUStandardVersionComparator.swift */; };
 		64DBBAD02AE019310010F463 /* SUStandardVersionComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DBBACC2AE019310010F463 /* SUStandardVersionComparator.swift */; };
 		64DBBAD12AE01B570010F463 /* SUStandardVersionComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DBBACC2AE019310010F463 /* SUStandardVersionComparator.swift */; };
+		64DBBAD42AE01EFB0010F463 /* SUStandardVersionComparatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DBBAD32AE01EFB0010F463 /* SUStandardVersionComparatorTest.swift */; };
+		64DBBAD62AE01F750010F463 /* SUStandardVersionComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DBBAD52AE01F750010F463 /* SUStandardVersionComparatorTest.m */; };
 		654F352529B1548700B10EEB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B5F8F609C4CEB300B25A18 /* Security.framework */; };
 		654F352729B154AE00B10EEB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654F352629B154AE00B10EEB /* ImageIO.framework */; };
 		654F352829B154B500B10EEB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C14F31136EFC2400649790 /* SystemConfiguration.framework */; };
@@ -1034,6 +1034,8 @@
 		641D7A5E2AE00DAB0037058F /* SUVersionComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUVersionComparison.swift; sourceTree = "<group>"; };
 		6425A69F2ADC049400ACA7D7 /* SPUDownloadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUDownloadData.swift; sourceTree = "<group>"; };
 		64DBBACC2AE019310010F463 /* SUStandardVersionComparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUStandardVersionComparator.swift; sourceTree = "<group>"; };
+		64DBBAD32AE01EFB0010F463 /* SUStandardVersionComparatorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SUStandardVersionComparatorTest.swift; sourceTree = "<group>"; };
+		64DBBAD52AE01F750010F463 /* SUStandardVersionComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUStandardVersionComparatorTest.m; sourceTree = "<group>"; };
 		654F352629B154AE00B10EEB /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		7202DC99269ABD3500737EC4 /* testappcast_phasedRollout.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = testappcast_phasedRollout.xml; sourceTree = "<group>"; };
 		72045CE426FEE708004F96E5 /* strip-framework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "strip-framework.sh"; sourceTree = "<group>"; };
@@ -1970,6 +1972,8 @@
 				5A5DD400249585E70045EB3E /* SUUpdateValidatorTest.swift */,
 				14950074195FDF5900BC5B5B /* SUUpdaterTest.m */,
 				61227A150DB548B800AB99EA /* SUVersionComparisonTest.m */,
+				64DBBAD32AE01EFB0010F463 /* SUStandardVersionComparatorTest.swift */,
+				64DBBAD52AE01F750010F463 /* SUStandardVersionComparatorTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -3369,11 +3373,11 @@
 			files = (
 				72266A8C29464D0200645376 /* SUSignatures.m in Sources */,
 				72266A8B29464CEA00645376 /* SUHost.m in Sources */,
-				641D7A512ADFD77B0037058F /* SPUDownloadData.swift in Sources */,
 				72266A8A2946493C00645376 /* SUCodeSigningVerifier.m in Sources */,
 				72266A88294635BA00645376 /* SUAppcastDriver.m in Sources */,
 				72266A872946359600645376 /* SUFileManager.m in Sources */,
 				725EE488277D398100D820CE /* SPUDeltaArchive.m in Sources */,
+				64DBBAD42AE01EFB0010F463 /* SUStandardVersionComparatorTest.swift in Sources */,
 				725EE483277C767A00D820CE /* SPUXarDeltaArchive.m in Sources */,
 				7269E4982648D3460088C213 /* SPUSkippedUpdate.m in Sources */,
 				721D5ABC25C680A300D23BEA /* SUFlatPackageUnarchiver.m in Sources */,
@@ -3386,7 +3390,7 @@
 				142E0E0919A83AAC00E4312B /* SUBinaryDeltaTest.m in Sources */,
 				7267E5F11D3D917A00D1BF90 /* SUBinaryDeltaUnarchiver.m in Sources */,
 				F8761EB11ADC5068000C9034 /* SUCodeSigningVerifierTest.m in Sources */,
-				64DBBACF2AE019310010F463 /* SUStandardVersionComparator.swift in Sources */,
+				64DBBAD62AE01F750010F463 /* SUStandardVersionComparatorTest.m in Sources */,
 				5A5DD402249586840045EB3E /* SUUpdateValidator.m in Sources */,
 				7267E5F61D3D919000D1BF90 /* SUDiskImageUnarchiver.m in Sources */,
 				7267E5F21D3D918000D1BF90 /* SUSignatureVerifier.m in Sources */,
