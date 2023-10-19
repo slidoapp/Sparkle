@@ -184,11 +184,96 @@ public class SUStandardVersionComparator: NSObject, SUVersionComparison {
         @return A comparison result between @c versionA and @c versionB
     */
     public func compareVersion(_ versionA: String, toVersion versionB: String) -> ComparisonResult {
-        var splitPartsA = self.splitVersion(string: versionA)
-        var splitPartsB = self.splitVersion(string: versionB)
+        var partsA = self.splitVersion(string: versionA)
+        var partsB = self.splitVersion(string: versionB)
         
-        self.balanceVersionParts(partsA: &splitPartsA, partsB: &splitPartsB)
-
+        self.balanceVersionParts(partsA: &partsA, partsB: &partsB)
+        
+        let count = min(partsA.count, partsB.count)
+        
+        for i in 0 ..< count {
+            let partA = partsA[i]
+            let partB = partsB[i]
+            
+            let typeA = self.typeOfCharacter(partA)
+            let typeB = self.typeOfCharacter(partB)
+            
+            // Compare types
+            if self.isEqualCharacterTypeClassForTypeA(typeA: typeA, typeB: typeB) {
+                // Same type; we can compare
+                if typeA == .numberType {
+                    let valueA = Int64(partA) ?? 0
+                    let valueB = Int64(partB) ?? 0
+                    
+                    if valueA > valueB {
+                        return .orderedDescending
+                    }
+                    else if valueA < valueB {
+                        return .orderedAscending
+                    }
+                }
+                else if typeA == .stringType {
+                    let result = partA.compare(partB)
+                    if result != .orderedSame {
+                        return result
+                    }
+                }
+            }
+            else {
+                // Not the same type? Now we have to do some validity checking
+                if typeA != .stringType && typeB == .stringType {
+                    // typeA wins
+                    return .orderedDescending
+                }
+                else if typeA == .stringType && typeB != .stringType {
+                    // typeB wins
+                    return .orderedAscending
+                }
+                else {
+                    // One is a number and the other is a period. The period is invalid
+                    if typeA == .numberType {
+                        return .orderedDescending
+                    }
+                    else {
+                        return .orderedAscending
+                    }
+                }
+            }
+        }
+        
+        // The versions are equal up to the point where they both still have parts
+        // Lets check to see if one is larger than the other
+        if partsA.count != partsB.count {
+            // Yep. Lets get the next part of the larger
+            // n holds the index of the part we want.
+            var missingPart: String
+            var shorterResult: ComparisonResult
+            var largerResult: ComparisonResult
+            
+            if partsA.count > partsB.count {
+                missingPart = partsA[count]
+                shorterResult = .orderedAscending
+                largerResult = .orderedDescending
+            }
+            else {
+                missingPart = partsB[count]
+                shorterResult = .orderedDescending
+                largerResult = .orderedAscending
+            }
+            
+            let missingType = self.typeOfCharacter(missingPart)
+            // Check the type
+            if missingType == .stringType {
+                // It's a string. Shorter version wins
+                return shorterResult
+            }
+            else {
+                // It's a number/period. Larger version wins
+                return largerResult
+            }
+        }
+        
+        // The 2 strings are identical
         return .orderedSame
     }
 }

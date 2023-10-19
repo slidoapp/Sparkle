@@ -34,7 +34,6 @@
     XCTAssertNotNil(comparator);
 }
 
-
 - (void)test_compareVersion_sameNumericVersionsAreEqual
 {
     SUStandardVersionComparator *comparator = [[SUStandardVersionComparator alloc] init];
@@ -44,6 +43,28 @@
     
     // Assert
     XCTAssertEqual(actualResult, NSOrderedSame);
+}
+
+- (void)test_compareVersion_newerVersionIsAscending
+{
+    SUStandardVersionComparator *comparator = [[SUStandardVersionComparator alloc] init];
+    
+    // Act
+    NSComparisonResult actualResult = [comparator compareVersion:@"1.0" toVersion:@"1.1"];
+    
+    // Assert
+    XCTAssertEqual(actualResult, NSOrderedAscending);
+}
+
+- (void)test_compareVersion_olderVersionIsDescending
+{
+    SUStandardVersionComparator *comparator = [[SUStandardVersionComparator alloc] init];
+    
+    // Act
+    NSComparisonResult actualResult = [comparator compareVersion:@"12.5" toVersion:@"12.4"];
+    
+    // Assert
+    XCTAssertEqual(actualResult, NSOrderedDescending);
 }
 
 
