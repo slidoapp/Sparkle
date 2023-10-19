@@ -38,14 +38,19 @@ public class SUStandardVersionComparator: NSObject, SUVersionComparison {
         case dashType
     }
     
-    func typeOfCharacter(_ character: String) -> SUCharacterType {
+    func typeOfCharacter(_ string: String) -> SUCharacterType {
+        let character = string[string.startIndex]
+        return self.typeOfCharacter(character)
+    }
+    
+    func typeOfCharacter(_ character: Character) -> SUCharacterType {
         if character == "." {
             return .periodSeparatorType
         } else if character == "-" {
             return .dashType
         }
-        
-        guard let characterScalar = character[character.startIndex].unicodeScalars.first else {
+
+        guard let characterScalar = character.unicodeScalars.first else {
             return .stringType
         }
         
@@ -85,9 +90,7 @@ public class SUStandardVersionComparator: NSObject, SUVersionComparison {
     }
     
     func splitVersion(string version: String) -> [String] {
-        var character: String
         var s: String
-        var n: Int
         var oldType: SUCharacterType
         var newType: SUCharacterType
         var parts: [String] = []
@@ -100,9 +103,7 @@ public class SUStandardVersionComparator: NSObject, SUVersionComparison {
         s = String(version.prefix(1))
         oldType = self.typeOfCharacter(s)
         
-        n = version.count - 1
-        for i in 1 ... n {
-            character = String(version.suffix(i))
+        for character in version.dropFirst() {
             newType = self.typeOfCharacter(character)
             if newType == .dashType {
                 break
@@ -110,7 +111,7 @@ public class SUStandardVersionComparator: NSObject, SUVersionComparison {
             if oldType != newType || self.isSeparatorType(characterType: oldType) {
                 // We've reached a new segment
                 parts.append(s)
-                s = character
+                s = String(character)
             } else {
                 // Add character to string and continue
                 s.append(character)

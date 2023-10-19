@@ -101,12 +101,14 @@ class SUStandardVersionComparatorTest: XCTestCase {
     
     // MARK: func splitVersion
     func test_splitVersion() {
+        let expectedParts = ["1", ".", "23", ".", "19", " ", "(", "1234", ")"]
         let comparator = SUStandardVersionComparator()
         
         // Act
-        let actualParts = comparator.splitVersion(string: "1.0.0 (1234)")
+        let actualParts = comparator.splitVersion(string: "1.23.19 (1234)")
         
         // Assert
-        XCTAssertEqual(actualParts.count, 4)
+        XCTAssertEqual(actualParts.count, 9)
+        XCTAssertEqual(actualParts, expectedParts)
     }
 }
