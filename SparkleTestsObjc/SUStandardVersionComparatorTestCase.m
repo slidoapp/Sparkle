@@ -16,6 +16,15 @@
 
 @implementation SUStandardVersionComparatorTestCase
 
+- (void)test_init_standardComparatorCanBeInitialized
+{
+    // Arrange & Act
+    SUStandardVersionComparator *comparator = [[SUStandardVersionComparator alloc] init];
+
+    // Assert
+    XCTAssertNotNil(comparator);
+}
+
 - (void)test_defaultComparator_comparatorIsAccessibleFromObjC
 {
     // Arrange & Act

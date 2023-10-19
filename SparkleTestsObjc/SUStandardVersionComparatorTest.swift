@@ -10,6 +10,14 @@
 import XCTest
 
 class SUStandardVersionComparatorTest: XCTestCase {
+    func test_init_standardComparatorCanBeInitialized() throws {
+        // Arrange & Act
+        let actualtComparator = SUStandardVersionComparator()
+        
+        // Assert
+        XCTAssertNotNil(actualtComparator)
+    }
+
     func test_default_comparatorIsAccessibleFromSwift() throws {
         // Arrange & Act
         let actualDefaultComparator = SUStandardVersionComparator.default
