@@ -34,4 +34,17 @@
     XCTAssertNotNil(comparator);
 }
 
+
+- (void)test_compareVersion_sameNumericVersionsAreEqual
+{
+    SUStandardVersionComparator *comparator = [[SUStandardVersionComparator alloc] init];
+    
+    // Act
+    NSComparisonResult actualResult = [comparator compareVersion:@"1.0" toVersion:@"1.0"];
+    
+    // Assert
+    XCTAssertEqual(actualResult, NSOrderedSame);
+}
+
+
 @end
