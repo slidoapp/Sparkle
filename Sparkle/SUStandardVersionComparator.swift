@@ -29,6 +29,146 @@ public class SUStandardVersionComparator: NSObject, SUVersionComparison {
     public override init() {
     }
     
+    enum SUCharacterType {
+        case numberType
+        case stringType
+        case periodSeparatorType
+        case punctuationSeparatorType
+        case whitespaceSeparatorType
+        case dashType
+    }
+    
+    func typeOfCharacter(_ character: String) -> SUCharacterType {
+        if character == "." {
+            return .periodSeparatorType
+        } else if character == "-" {
+            return .dashType
+        }
+        
+        guard let characterScalar = character[character.startIndex].unicodeScalars.first else {
+            return .stringType
+        }
+        
+        if CharacterSet.decimalDigits.contains(characterScalar) {
+            return .numberType
+        } else if CharacterSet.whitespacesAndNewlines.contains(characterScalar) {
+            return .whitespaceSeparatorType
+        } else if CharacterSet.punctuationCharacters.contains(characterScalar) {
+            return .punctuationSeparatorType
+        } else {
+            return .stringType
+        }
+    }
+    
+    func isSeparatorType(characterType: SUCharacterType) -> Bool {
+        switch characterType {
+        case .numberType, .stringType, .dashType:
+            return false
+        case .periodSeparatorType, .punctuationSeparatorType, .whitespaceSeparatorType:
+            return true
+        }
+    }
+    
+    /// If type A and type B are some sort of separator, consider them to be equal
+    func isEqualCharacterTypeClassForTypeA(typeA: SUCharacterType, typeB: SUCharacterType) -> Bool {
+        switch typeA {
+        case .numberType, .stringType, .dashType:
+            return (typeA == typeB)
+        case .periodSeparatorType, .punctuationSeparatorType, .whitespaceSeparatorType:
+            switch typeB {
+            case .periodSeparatorType, .punctuationSeparatorType, .whitespaceSeparatorType:
+                return true
+            case .numberType, .stringType, .dashType:
+                return false
+            }
+        }
+    }
+    
+    func splitVersion(string version: String) -> [String] {
+        var character: String
+        var s: String
+        var n: Int
+        var oldType: SUCharacterType
+        var newType: SUCharacterType
+        var parts: [String] = []
+        
+        if version.count == 0 {
+            // Nothing to do here
+            return []
+        }
+        
+        s = String(version.prefix(1))
+        oldType = self.typeOfCharacter(s)
+        
+        n = version.count - 1
+        for i in 1 ... n {
+            character = String(version.suffix(i))
+            newType = self.typeOfCharacter(character)
+            if newType == .dashType {
+                break
+            }
+            if oldType != newType || self.isSeparatorType(characterType: oldType) {
+                // We've reached a new segment
+                parts.append(s)
+                s = character
+            } else {
+                // Add character to string and continue
+                s.append(character)
+            }
+            oldType = newType
+        }
+        
+        // Add the last part onto the array
+        parts.append(s)
+        return parts
+    }
+    
+    /// This returns the count of number and period parts at the beginning of the version
+    /// See -balanceVersionPartsA:partsB below
+    func countOfNumberAndPeriodStartingParts(_ parts: [String]) -> Int {
+        var count = 0
+        for part in parts {
+            let characterType = self.typeOfCharacter(part)
+            if characterType == .numberType || characterType == .periodSeparatorType {
+                count += 1
+            } else {
+                break
+            }
+        }
+
+        return count
+    }
+    
+    func addNumberAndPeriodParts(to toParts: inout [String], toNumberAndPeriodPartsCount: Int, from fromParts: [String], fromNumberAndPeriodPartsCount: Int) {
+        let partsCountDifference = fromNumberAndPeriodPartsCount - toNumberAndPeriodPartsCount
+        
+        for insertionIndex in toNumberAndPeriodPartsCount ..< (toNumberAndPeriodPartsCount + partsCountDifference) {
+            let character = fromParts[insertionIndex]
+            let typeA = typeOfCharacter(character)
+            if typeA == .periodSeparatorType {
+                toParts.insert(".", at: insertionIndex)
+            } else if typeA == .numberType {
+                toParts.insert("0", at: insertionIndex)
+            } else {
+                // It should not be possible to get here
+                assertionFailure("Cannot add non numeric character \(character) to version part.")
+            }
+        }
+    }
+    
+    /// If one version starts with "1.0.0" and the other starts with "1.1" we make sure they're balanced
+    /// such that the latter version now becomes "1.1.0". This helps ensure that versions like "1.0" and "1.0.0" are equal.
+    func balanceVersionParts(partsA: inout [String], partsB: inout [String]) {
+        let partANumberAndPeriodPartsCount = self.countOfNumberAndPeriodStartingParts(partsA)
+        let partBNumberAndPeriodPartsCount = self.countOfNumberAndPeriodStartingParts(partsB)
+        
+        if partANumberAndPeriodPartsCount > partBNumberAndPeriodPartsCount {
+            self.addNumberAndPeriodParts(to: &partsB, toNumberAndPeriodPartsCount: partBNumberAndPeriodPartsCount, from: partsA, fromNumberAndPeriodPartsCount: partANumberAndPeriodPartsCount)
+        } else if partBNumberAndPeriodPartsCount > partANumberAndPeriodPartsCount {
+            self.addNumberAndPeriodParts(to: &partsA, toNumberAndPeriodPartsCount: partANumberAndPeriodPartsCount, from: partsB, fromNumberAndPeriodPartsCount: partBNumberAndPeriodPartsCount)
+        }
+    }
+    
     // MARK: SUVersionComparison members
     
     /**
@@ -43,6 +183,11 @@ public class SUStandardVersionComparator: NSObject, SUVersionComparison {
         @return A comparison result between @c versionA and @c versionB
     */
     public func compareVersion(_ versionA: String, toVersion versionB: String) -> ComparisonResult {
+        var splitPartsA = self.splitVersion(string: versionA)
+        var splitPartsB = self.splitVersion(string: versionB)
+        
+        self.balanceVersionParts(partsA: &splitPartsA, partsB: &splitPartsB)
+
         return .orderedSame
     }
 }
