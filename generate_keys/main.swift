@@ -9,6 +9,7 @@
 import Foundation
 import Security
 import ArgumentParser
+import CryptoKit
 
 let PRIVATE_KEY_LABEL = "Private key for signing Sparkle updates"
 
@@ -90,6 +91,15 @@ func findKeyPair(account: String) -> Data? {
 }
 
 func generateKeyPair() -> (publicEdKey: Data, privateEdKey: Data) {
+    #if SPARKLE_BUILD_ENABLE_CRYPTOKIT
+    
+    let privateEdKey = Curve25519.Signing.PrivateKey()
+    let publicEdKey = privateEdKey.publicKey
+    
+    return (publicEdKey.rawRepresentation, privateEdKey.rawRepresentation)
+    
+    #else
+
     var seed = Array<UInt8>(repeating: 0, count: 32)
     var publicEdKey = Array<UInt8>(repeating: 0, count: 32)
     var privateEdKey = Array<UInt8>(repeating: 0, count: 64)
@@ -100,6 +110,8 @@ func generateKeyPair() -> (publicEdKey: Data, privateEdKey: Data) {
     ed25519_create_keypair(&publicEdKey, &privateEdKey, seed)
     
     return (Data(publicEdKey), Data(privateEdKey))
+
+    #endif
 }
 
 func storeKeyPair(account: String, publicEdKey: Data, privateEdKey: Data) {

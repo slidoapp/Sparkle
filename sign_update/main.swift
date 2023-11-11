@@ -9,8 +9,15 @@
 import Foundation
 import Security
 import ArgumentParser
+import CryptoKit
 
 func findKeysInKeychain(account: String) throws -> (Data, Data) {
+    #if SPARKLE_BUILD_ENABLE_CRYPTOKIT
+    let PRIVATE_KEY_LENGTH = 32
+    #else
+    let PRIVATE_KEY_LENGTH = 64
+    #endif
+    
     var item: CFTypeRef?
     let res = SecItemCopyMatching([
         kSecClass as String: kSecClassGenericPassword,
@@ -20,7 +27,7 @@ func findKeysInKeychain(account: String) throws -> (Data, Data) {
         kSecReturnData as String: kCFBooleanTrue!,
         ] as CFDictionary, &item)
     if res == errSecSuccess, let encoded = item as? Data, let keys = Data(base64Encoded: encoded) {
-        return (keys[0..<64], keys[64..<(64+32)])
+        return (keys[0..<PRIVATE_KEY_LENGTH], keys[PRIVATE_KEY_LENGTH..<(PRIVATE_KEY_LENGTH+32)])
     } else if res == errSecItemNotFound {
         print("ERROR! Signing key not found for account \(account). Please run generate_keys tool first or provide key with --ed-key-file <private_key_file>")
     } else if res == errSecAuthFailed {
@@ -69,6 +76,30 @@ func findKeys(inString privateAndPublicBase64Key: String) throws -> (Data, Data)
 }
 
 func edSignature(data: Data, publicEdKey: Data, privateEdKey: Data) -> String {
+    #if SPARKLE_BUILD_ENABLE_CRYPTOKIT
+    print("Info: pub \(publicEdKey.count), pri \(privateEdKey.count)")
+    assert(publicEdKey.count == 32)
+    assert(privateEdKey.count == 32)
+    
+    do {
+        print("Info: signing")
+        let privateKey = try Curve25519.Signing.PrivateKey(rawRepresentation: privateEdKey)
+        let output = try privateKey.signature(for: data)
+//        
+//        let publicKey = try Curve25519.Signing.PublicKey(rawRepresentation: publicEdKey)
+//        let validate = publicKey.isValidSignature(output, for: data)
+//        
+//        print("Info: Signature is valid: \(validate ? "YES" : "NO")")
+//        
+        return output.base64EncodedString()
+    }
+    catch {
+        print("Error: failed to sign data.")
+        return ""
+    }
+    
+    #else
+    
     assert(publicEdKey.count == 32)
     assert(privateEdKey.count == 64)
     let data = Array(data)
@@ -77,6 +108,30 @@ func edSignature(data: Data, publicEdKey: Data, privateEdKey: Data) -> String {
     
     ed25519_sign(&output, data, data.count, pubkey, privkey)
     return Data(output).base64EncodedString()
+    
+    #endif
+}
+
+func edVerifySignature(_ signature: Data, data: Data, publicKey: Data) -> Bool {
+    #if SPARKLE_BUILD_ENABLE_CRYPTOKIT
+    
+    do {
+        let publicKey = try Curve25519.Signing.PublicKey(rawRepresentation: publicKey)
+        return publicKey.isValidSignature(signature, for: data)
+    }
+    catch {
+        print("Error: failed to verify data.")
+        return false
+    }
+    
+    #else
+    
+    let signatureBytes = Array(signature)
+    let dataBytes = Array(data)
+    let publicKeyBytes = Array(publicKey)
+    
+    return ed25519_verify(signatureBytes, dataBytes, data.count, publicKeyBytes) == 0
+    #endif
 }
 
 struct SignUpdate: ParsableCommand {
@@ -147,16 +202,12 @@ struct SignUpdate: ParsableCommand {
                 throw ExitCode.failure
             }
             
-            let signatureBytes = Array(signatureData)
-            guard signatureBytes.count == 64 else {
+            guard signatureData.count == 64 else {
                 print("Error: signature passed in has an invalid byte count.")
                 throw ExitCode.failure
             }
             
-            let dataBytes = Array(data)
-            let publicKeyBytes = Array(pub)
-            
-            if ed25519_verify(signatureBytes, dataBytes, data.count, publicKeyBytes) == 0 {
+            if edVerifySignature(signatureData, data: data, publicKey: pub) {
                 print("Error: failed to pass signing verification.")
                 throw ExitCode.failure
             }
