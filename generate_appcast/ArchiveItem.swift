@@ -89,7 +89,7 @@ class ArchiveItem: CustomStringConvertible {
         self.version = version
         self._shortVersion = shortVersion
         self.feedURL = feedURL
-        self.minimumSystemVersion = minimumSystemVersion ?? "10.13"
+        self.minimumSystemVersion = minimumSystemVersion ?? "11"
         self.frameworkVersion = frameworkVersion
         self.sparkleExecutableFileSize = sparkleExecutableFileSize
         self.sparkleLocales = sparkleLocales
