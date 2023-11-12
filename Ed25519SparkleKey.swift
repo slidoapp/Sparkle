@@ -23,6 +23,9 @@ import Foundation
 ///
 /// If you wish to be compatible with these libraries you must keep the seed around.
 struct Ed25519SparkleKey {
+    /// Length of Ed25519 seed in bytes.
+    static let Ed25519SeedLength = 32
+    
     let publicKey: Data
     let privateKey: Data
     

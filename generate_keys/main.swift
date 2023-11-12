@@ -91,12 +91,18 @@ func findKeyPair(account: String) -> Data? {
 
 func generateKeyPair() -> Ed25519SparkleKey {
     var seed = Array<UInt8>(repeating: 0, count: 32)
-    var publicEdKey = Array<UInt8>(repeating: 0, count: 32)
-    var privateEdKey = Array<UInt8>(repeating: 0, count: 64)
-
+    
     guard ed25519_create_seed(&seed) == 0 else {
         failure("Unable to initialize random seed. Try restarting your computer.")
     }
+    
+    return generateKeyPair(seed: seed)
+}
+
+func generateKeyPair(seed: Array<UInt8>) -> Ed25519SparkleKey {
+    var publicEdKey = Array<UInt8>(repeating: 0, count: 32)
+    var privateEdKey = Array<UInt8>(repeating: 0, count: 64)
+
     ed25519_create_keypair(&publicEdKey, &privateEdKey, seed)
     
     return Ed25519SparkleKey(publicKey: Data(publicEdKey), privateKey: Data(privateEdKey))
@@ -230,6 +236,32 @@ struct GenerateKeys: ParsableCommand {
             }
         } else if let importedPrivateKeyFile = importedPrivateKeyFile {
             /// Import mode - import the specifed key-pair file
+            
+            do {
+                // DER header for ED25516 private key
+                let derHeader = Data([0x30, 0x2e, 0x02, 0x01, 0x00, 0x30, 0x05, 0x06, 0x03, 0x2b, 0x65, 0x70, 0x04, 0x22, 0x04, 0x20])
+                let fileData = try Data(contentsOf: URL(fileURLWithPath: importedPrivateKeyFile))
+                if fileData.starts(with: derHeader) {
+                    guard fileData.count == derHeader.count + Ed25519SparkleKey.Ed25519SeedLength else {
+                        failure("Failed to read private-key-file: DER encoded data are invalid. Expected key length \(Ed25519SparkleKey.Ed25519SeedLength) bytes.")
+                    }
+
+                    print("Importing signing key from DER format...\n")
+
+                    let privateKeySeedData = fileData.subdata(in: derHeader.count ..< derHeader.count + 32)
+                    let privateKeySeed = Array(privateKeySeedData)
+                    
+                    let key = generateKeyPair(seed: privateKeySeed)
+                    
+                    storeKeyPair(account: account, privateKey: key)
+                    printNewPublicKeyUsage(key.publicKey)
+                    return
+                }
+            } catch {
+                failure("Failed to read private-key-file: \(error)")
+            }
+            
+            // import ED25519 key from Sparkle format in Base64
             let privateAndPublicBase64KeyFile = importedPrivateKeyFile
             let privateAndPublicBase64Key: String
             let key: Ed25519SparkleKey
