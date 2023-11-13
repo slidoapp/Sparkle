@@ -89,7 +89,7 @@ func findKeyPair(account: String) -> Data? {
     exit(1)
 }
 
-func generateKeyPair() -> (publicEdKey: Data, privateEdKey: Data) {
+func generateKeyPair() -> Ed25519SparkleKey {
     var seed = Array<UInt8>(repeating: 0, count: 32)
     var publicEdKey = Array<UInt8>(repeating: 0, count: 32)
     var privateEdKey = Array<UInt8>(repeating: 0, count: 64)
@@ -99,10 +99,10 @@ func generateKeyPair() -> (publicEdKey: Data, privateEdKey: Data) {
     }
     ed25519_create_keypair(&publicEdKey, &privateEdKey, seed)
     
-    return (Data(publicEdKey), Data(privateEdKey))
+    return Ed25519SparkleKey(publicKey: Data(publicEdKey), privateKey: Data(privateEdKey))
 }
 
-func storeKeyPair(account: String, publicEdKey: Data, privateEdKey: Data) {
+func storeKeyPair(account: String, privateKey: Ed25519SparkleKey) {
     let query = commonKeychainItemAttributes(account: account).merging([
         /// Mark the new item as sensitive (requires keychain password to export - e.g. a private key).
         kSecAttrIsSensitive as String: kCFBooleanTrue!,
@@ -115,13 +115,13 @@ func storeKeyPair(account: String, publicEdKey: Data, privateEdKey: Data) {
         kSecAttrLabel       as String: PRIVATE_KEY_LABEL,
 
         /// A comment regarding the item's content (can be viewed in Keychain Access; we give the public key here).
-        kSecAttrComment     as String: "Public key (SUPublicEDKey value) for this key is:\n\n\(Data(publicEdKey).base64EncodedString())",
+        kSecAttrComment     as String: "Public key (SUPublicEDKey value) for this key is:\n\n\(privateKey.publicKeyBase64)",
 
         /// A short description of the item's contents (shown as "kind" in Keychain Access").
         kSecAttrDescription as String: "private key",
 
         /// The actual data content of the new item.
-        kSecValueData       as String: (privateEdKey + publicEdKey).base64EncodedData() as CFData
+        kSecValueData       as String: privateKey.privateKeyBase64Data as CFData
     
     ], uniquingKeysWith: { $1 }) as CFDictionary
     
@@ -232,28 +232,21 @@ struct GenerateKeys: ParsableCommand {
             /// Import mode - import the specifed key-pair file
             let privateAndPublicBase64KeyFile = importedPrivateKeyFile
             let privateAndPublicBase64Key: String
+            let key: Ed25519SparkleKey
             do {
                 privateAndPublicBase64Key = try String(contentsOfFile: privateAndPublicBase64KeyFile)
+                key = try Ed25519SparkleKey(import: privateAndPublicBase64Key)
+            } catch (PrivateKeyError.invalidFormat(let message)) {
+                failure(message)
             } catch {
                 failure("Failed to read private-key-file: \(error)")
             }
-            
-            guard let privateAndPublicKey = Data(base64Encoded: privateAndPublicBase64Key.trimmingCharacters(in: .whitespacesAndNewlines), options: .init()) else {
-                failure("Failed to decode base64 encoded key data from: \(privateAndPublicBase64Key)")
-            }
-            
-            guard privateAndPublicKey.count == 64 + 32 else {
-                failure("Imported key must be 96 bytes decoded. Instead it is \(privateAndPublicKey.count) bytes decoded.")
-            }
-            
+
             print("Importing signing key..\n")
             
-            let publicKey = privateAndPublicKey[64...]
-            let privateKey = privateAndPublicKey[0..<64]
+            storeKeyPair(account: account, privateKey: key)
             
-            storeKeyPair(account: account, publicEdKey: publicKey, privateEdKey: privateKey)
-            
-            printNewPublicKeyUsage(publicKey)
+            printNewPublicKeyUsage(key.publicKey)
         } else {
             /// Default mode - find an existing public key and print its usage, or generate new keys
             if let keyPair = findKeyPair(account: account) {
@@ -268,10 +261,10 @@ struct GenerateKeys: ParsableCommand {
             } else {
                 print("Generating a new signing key. This may take a moment, depending on your machine.")
                 
-                let (pubKey, privKey) = generateKeyPair()
-                storeKeyPair(account: account, publicEdKey: pubKey, privateEdKey: privKey)
+                let key = generateKeyPair()
+                storeKeyPair(account: account, privateKey: key)
                 
-                printNewPublicKeyUsage(pubKey)
+                printNewPublicKeyUsage(key.publicKey)
             }
         }
     }

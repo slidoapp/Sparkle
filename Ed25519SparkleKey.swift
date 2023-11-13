@@ -43,6 +43,14 @@ struct Ed25519SparkleKey {
         self.publicKey = privateAndPublicKey[64...]
         self.privateKey = privateAndPublicKey[0..<64]
     }
+    
+    var publicKeyBase64: String {
+        self.publicKey.base64EncodedString()
+    }
+    
+    var privateKeyBase64Data: Data {
+        (self.privateKey + self.publicKey).base64EncodedData()
+    }
 }
 
 enum PrivateKeyError: Error {
